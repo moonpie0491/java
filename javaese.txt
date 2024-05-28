@@ -1,0 +1,1272 @@
+1. Constructors
+
+1.1 Defaultconstructor
+package ese;
+
+class Bike1 {
+	// main method
+	public static void main(String args[]) {
+		// calling a default constructor
+		Bike1 b = new Bike1();
+	}
+
+	// creating a default constructor
+	Bike1() {
+		System.out.println("Bike is created");
+	}
+}
+
+1.2 Parameterizedconstructor
+package ese;
+
+class Student4{  
+
+    public static void main(String args[]){  
+        //creating objects and passing values  
+        Student4 s1 = new Student4(111,"Karan");  
+        Student4 s2 = new Student4(222,"manish");  
+        //calling method to display the values of object  
+        s1.display();  
+        s2.display();  
+       }  
+    int id;  
+    String name;  
+   
+    //creating a parameterized constructor  
+    Student4(int i,String n){  
+    id = i;  
+    name = n;  
+    }
+
+	// method to display the values
+	void display() {
+		System.out.println(id + " " + name);
+	}
+}  
+
+1.3 Copyconstructor
+package ese;
+
+class Student6 {
+	public static void main(String args[]) {
+		Student6 s1 = new Student6(111, "Karan");
+		Student6 s2 = new Student6(s1);
+		s1.display();
+		s2.display();
+	}
+
+	int id;
+	String name;
+
+	// constructor to initialize integer and string
+	Student6(int i, String n) {
+		id = i;
+		name = n;
+	}
+
+	// constructor to initialize another object
+	Student6(Student6 s) {
+		id = s.id;
+		name = s.name;
+	}
+
+	void display() {
+		System.out.println(id + " " + name);
+	}
+}
+
+Ques:
+public class Product {
+    // Instance variables
+    private String productName;
+    private double price;
+    private int quantity;
+ 
+    // Default constructor
+    public Product() {
+        this.productName = "Default Product";
+        this.price = 0.0;
+        this.quantity = 0;
+    }
+ 
+    // Parameterized constructor
+    public Product(String productName, double price, int quantity) {
+        this.productName = productName;
+        this.price = price;
+        this.quantity = quantity;
+    }
+ 
+    // Method to display product details
+    public void displayProductDetails() {
+        System.out.println("Product Name: " + productName);
+        System.out.println("Price: $" + price);
+        System.out.println("Quantity: " + quantity);
+        System.out.println("----------------------");
+    }
+ 
+    public static void main(String[] args) {
+        // Testing the default constructor
+        Product defaultProduct = new Product();
+        System.out.println("Default Product Details:");
+        defaultProduct.displayProductDetails();
+ 
+        // Testing the parameterized constructor
+        Product customProduct = new Product("Custom Product", 25.99, 10);
+        System.out.println("Custom Product Details:");
+        customProduct.displayProductDetails();
+    }
+}
+
+
+2. Inheritance 
+
+2.1 SingleInheritance
+package ese;
+
+class Animal {
+	void eat() {
+		System.out.println("eating...");
+	}
+}
+
+class Dog extends Animal {
+	void bark() {
+		System.out.println("barking...");
+	}
+}
+
+class TestInheritance {
+	// file name TestInheritance
+	public static void main(String args[]) {
+		Dog d = new Dog();
+		d.bark();
+		d.eat();
+	}
+}
+
+2.1 MultilevelInheritance 
+package ese;
+
+class Animall {
+	void eat() {
+		System.out.println("eating...");
+	}
+}
+
+class BabyDog extends Dogg {
+	void weep() {
+		System.out.println("weeping...");
+	}
+}
+
+class Dogg extends Animall {
+	void bark() {
+		System.out.println("barking...");
+	}
+}
+
+class TestInheritance2 {
+	public static void main(String args[]) {
+		BabyDog d = new BabyDog();
+		d.weep();
+		d.bark();
+		d.eat();
+	}
+}
+
+2.2 Hierarchical Inheritance
+package ese1;
+
+class Animal {
+	void eat() {
+		System.out.println("eating...");
+	}
+}
+
+class Cat extends Animal {
+	void meow() {
+		System.out.println("meowing...");
+	}
+}
+
+class Dog extends Animal {
+	void bark() {
+		System.out.println("barking...");
+	}
+}
+
+class TestInheritance3 {
+	public static void main(String args[]) {
+		Cat c = new Cat();
+		c.meow();
+		c.eat();
+//c.bark();//C.T.Error  
+	}
+}
+
+Ques:
+class Person {
+    String name;
+    int age;
+ 
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+ 
+    public void display_info() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+ 
+class Student extends Person {
+    int student_id;
+    String major;
+ 
+    public Student(String name, int age, int student_id, String major) {
+        super(name, age);
+        this.student_id = student_id;
+        this.major = major;
+    }
+ 
+    public void enroll_course() {
+        System.out.println(name + " is enrolling in a course.");
+    }
+}
+ 
+class GraduateStudent extends Student {
+    String research_topic;
+ 
+    public GraduateStudent(String name, int age, int student_id, String major, String research_topic) {
+        super(name, age, student_id, major);
+        this.research_topic = research_topic;
+    }
+ 
+    public void conduct_research() {
+        System.out.println(name + " is conducting research on " + research_topic);
+    }
+}
+ 
+class Professor extends Person {
+    int employee_id;
+    String department;
+    String teaching_subject;
+ 
+    public Professor(String name, int age, int employee_id, String department, String teaching_subject) {
+        super(name, age);
+        this.employee_id = employee_id;
+        this.department = department;
+        this.teaching_subject = teaching_subject;
+    }
+ 
+    public void conduct_lecture() {
+        System.out.println(name + " is conducting a lecture on " + teaching_subject);
+    }
+}
+ 
+class TeachingAssistant extends GraduateStudent {
+    int ta_id;
+ 
+    public TeachingAssistant(String name, int age, int student_id, String major, String research_topic, int ta_id) {
+        super(name, age, student_id, major, research_topic);
+        this.ta_id = ta_id;
+    }
+ 
+    public void assist_professor() {
+        System.out.println(name + " is assisting a professor as a teaching assistant.");
+    }
+}
+ 
+public class Inheritance {
+    public static void main(String[] args) {
+        // Single Inheritance
+        Student student = new Student("John", 20, 1234, "Computer Science");
+        student.display_info();
+        student.enroll_course();
+ 
+        // Multilevel Inheritance
+        GraduateStudent gradStudent = new GraduateStudent("Alice", 25, 5678, "Physics", "Quantum Mechanics");
+        gradStudent.display_info();
+        gradStudent.enroll_course();
+        gradStudent.conduct_research();
+ 
+        // Hierarchical Inheritance
+        Professor professor = new Professor("Dr. Smith", 40, 789, "Engineering", "Electrical Engineering");
+        professor.display_info();
+        professor.conduct_lecture();
+ 
+        // Hybrid Inheritance
+        TeachingAssistant ta = new TeachingAssistant("Bob", 22, 3456, "Mathematics", "Number Theory", 456);
+        ta.display_info();
+        ta.enroll_course();
+        ta.conduct_research();
+        ta.assist_professor();
+    }
+}
+
+Ques: MultipleInheritance
+
+// CardioWorkout interface
+interface CardioWorkout {
+    String getWorkoutName();
+    int getDurationMinutes();
+    void displayWorkoutDetails();
+}
+ 
+// StrengthTraining interface
+interface StrengthTraining {
+    String getEquipmentUsed();
+    String getInstructorName();
+    void displayStrengthTrainingDetails();
+}
+ 
+// FullBodyWorkout class implementing both interfaces
+class FullBodyWorkout implements CardioWorkout, StrengthTraining {
+ 
+    private String workoutName;
+    private int durationMinutes;
+    private String equipmentUsed;
+    private String instructorName;
+ 
+    // Constructor
+    public FullBodyWorkout(String workoutName, int durationMinutes, String equipmentUsed, String instructorName) {
+        this.workoutName = workoutName;
+        this.durationMinutes = durationMinutes;
+        this.equipmentUsed = equipmentUsed;
+        this.instructorName = instructorName;
+    }
+ 
+    // Implement methods from CardioWorkout interface
+    @Override
+    public String getWorkoutName() {
+        return workoutName;
+    }
+ 
+    @Override
+    public int getDurationMinutes() {
+        return durationMinutes;
+    }
+ 
+    @Override
+    public void displayWorkoutDetails() {
+        System.out.println("Cardio Workout Details:");
+        System.out.println("Name: " + getWorkoutName());
+        System.out.println("Duration: " + getDurationMinutes() + " minutes");
+    }
+ 
+    // Implement methods from StrengthTraining interface
+    @Override
+    public String getEquipmentUsed() {
+        return equipmentUsed;
+    }
+ 
+    @Override
+    public String getInstructorName() {
+        return instructorName;
+    }
+ 
+    @Override
+    public void displayStrengthTrainingDetails() {
+        System.out.println("\nStrength Training Details:");
+        System.out.println("Equipment Used: " + getEquipmentUsed());
+        System.out.println("Instructor Name: " + getInstructorName());
+    }
+ 
+    public static void main(String[] args) {
+        // Create an instance of FullBodyWorkout
+        FullBodyWorkout fullBodyWorkout = new FullBodyWorkout("Full Body Workout", 60, "Dumbbells, Resistance Bands", "Fitness Trainer John");
+ 
+        // Display workout details
+        fullBodyWorkout.displayWorkoutDetails();
+        fullBodyWorkout.displayStrengthTrainingDetails();
+    }
+}
+
+3. Method Overloading
+3.1 Changing no. of arg
+package ese1;
+
+class Adder {
+	static int add(int a, int b) {
+		return a + b;
+	}
+
+	static int add(int a, int b, int c) {
+		return a + b + c;
+	}
+}
+
+class TestOverloading1 {
+	public static void main(String[] args) {
+		System.out.println(Adder.add(11, 11));
+		System.out.println(Adder.add(11, 11, 11));
+	}
+}
+
+3.2 Changing data types of arg
+package ese1;
+class Adder {
+	static double add(double a, double b) {
+		return a + b;
+	}
+
+	static int add(int a, int b) {
+		return a + b;
+	}
+}
+
+class TestOverloading1 {
+	public static void main(String[] args) {
+		System.out.println(Adder.add(11, 11));
+		System.out.println(Adder.add(12.3, 12.6));
+	}
+}
+
+4. Method Overloading
+
+package ese1;
+//Creating a child class  
+class Bike2 extends Vehicle{  
+	// file name Bike2
+public static void main(String args[]){  
+Bike2 obj = new Bike2();//creating object  
+obj.run();//calling method  
+}  
+
+//defining the same method as in the parent class  
+@Override
+void run(){System.out.println("Bike is running safely");}  
+}
+
+//Java Program to illustrate the use of Java Method Overriding  
+//Creating a parent class.  
+class Vehicle {
+//defining a method  
+void run(){System.out.println("Vehicle is running");}  
+}
+
+5. Runtime Polymorphism 
+package ese1;
+class Circle extends Shape{  
+@Override
+void draw(){System.out.println("drawing circle...");}  
+}
+
+class Rectangle extends Shape {
+	@Override
+	void draw() {
+		System.out.println("drawing rectangle...");
+	}
+}
+
+class Shape{  
+void draw(){System.out.println("drawing...");}  
+}  
+class TestPolymorphism{  
+public static void main(String args[]){  
+	Shape s;
+	s = new Shape();
+	s.draw();
+s=new Rectangle();  
+s.draw();  
+s=new Circle();  
+s.draw();  
+s=new Triangle();  
+s.draw();  
+}  
+}  
+class Triangle extends Shape{  
+@Override
+void draw(){System.out.println("drawing triangle...");}  
+}  
+
+Ques:
+class Account {
+    private double balance;
+ 
+    public void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposit: $" + amount);
+        displayBalance();
+    }
+ 
+    public void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdraw: $" + amount);
+        } else {
+            System.out.println("Insufficient funds");
+        }
+        displayBalance();
+    }
+ 
+    public double getBalance() {
+        return balance;
+    }
+ 
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+ 
+    public void displayBalance() {
+        System.out.println("Current Balance: $" + balance);
+    }
+}
+ 
+class SavingsAccount extends Account {
+    @Override
+    public void withdraw(double amount) {
+        withdraw(amount, "Unknown reason");
+    }
+ 
+    public void withdraw(double amount, String reason) {
+        if (amount <= getBalance()) {
+            setBalance(getBalance() - amount);
+            System.out.println("Savings Account Withdraw: $" + amount + " for " + reason);
+        } else {
+            System.out.println("Insufficient funds");
+        }
+        displayBalance();
+    }
+}
+ 
+class CheckingAccount extends Account {
+    private double overdraftLimit = 100;
+ 
+    @Override
+    public void withdraw(double amount) {
+        if (amount <= getBalance() + overdraftLimit) {
+            setBalance(getBalance() - amount);
+            System.out.println("Checking Account Withdraw: $" + amount);
+        } else {
+            System.out.println("Exceeded overdraft limit");
+        }
+        displayBalance();
+    }
+}
+ 
+public class AccountDemo {
+    public static void main(String[] args) {
+        // Polymorphic Demonstration
+        Account savingsAccount = new SavingsAccount();
+        Account checkingAccount = new CheckingAccount();
+ 
+        // Illustrate polymorphism by invoking the withdraw() method on both objects
+        savingsAccount.withdraw(50);
+        checkingAccount.withdraw(50);
+ 
+        // Specific method for SavingsAccount
+        ((SavingsAccount) savingsAccount).withdraw(30, "Emergency");
+ 
+        // Specific method for CheckingAccount
+        ((CheckingAccount) checkingAccount).withdraw(200);
+    }
+}
+
+
+
+
+
+6. Abstraction
+
+abstract class Vehicle {
+    abstract void engine();
+}
+ 
+class Car extends Vehicle {
+    @Override
+    void engine() {
+        System.out.println("Car has good engine");
+    }
+}
+ 
+class Truck extends Vehicle {
+    @Override
+    void engine() {
+        System.out.println("Truck has bad engine");
+    }
+}
+ 
+public class VehicleProgram {
+    public static void main(String[] args) {
+        Car myCar = new Car();
+        Truck myTruck = new Truck();
+ 
+        myCar.engine();  // Output: Car has good engine
+        myTruck.engine();  // Output: Truck has bad engine
+    }
+}
+
+7. Interface:
+
+package ese1;
+
+interface Drawable {
+	static int cube(int x) {
+		return x * x * x;
+	}
+
+	void draw();
+}
+
+class Rectangle implements Drawable {
+	@Override
+	public void draw() {
+		System.out.println("drawing rectangle");
+	}
+}  
+
+class TestInterfaceStatic {
+public static void main(String args[]){  
+		Drawable d = new Rectangle();
+		d.draw();
+		System.out.println(Drawable.cube(3));
+	}
+}
+
+7. Interface & Abstract:
+package ese1;
+
+interface A {
+	void a();// bydefault, public and abstract
+
+	void b();
+
+	void c();
+
+	void d();
+}
+
+//Creating abstract class that provides the implementation of one method of A interface  
+abstract class B implements A {
+	@Override
+	public void c() {
+		System.out.println("I am C");
+	}
+}
+
+//Creating subclass of abstract class, now we need to provide the implementation of rest of the methods  
+class M extends B {
+	@Override
+	public void a() {
+		System.out.println("I am a");
+	}
+
+	@Override
+	public void b() {
+		System.out.println("I am b");
+	}
+
+	@Override
+	public void d() {
+		System.out.println("I am d");
+	}
+}  
+
+//Creating a test class that calls the methods of A interface  
+class Test5 {
+public static void main(String args[]){  
+		A a = new M();
+		a.a();
+		a.b();
+		a.c();
+		a.d();
+	}
+}
+
+8. Encapsulation:
+
+import java.util.Date;
+ 
+class Employee {
+    private int employeeId;
+    private String firstName;
+    private String lastName;
+    private Date dateOfBirth;
+    private double salary;
+ 
+    // Constructor
+    public Employee(int employeeId, String firstName, String lastName, Date dateOfBirth, double salary) {
+        this.employeeId = employeeId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.salary = salary;
+    }
+ 
+    // Accessor methods
+    public int getEmployeeId() {
+        return employeeId;
+    }
+ 
+    public String getFirstName() {
+        return firstName;
+    }
+ 
+    public String getLastName() {
+        return lastName;
+    }
+ 
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+ 
+    public double getSalary() {
+        return salary;
+    }
+ 
+    // Mutator methods
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
+ 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+ 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+ 
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+ 
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+ 
+    // Method to calculate yearly bonus
+    public double calculateYearlyBonus() {
+        // Example formula for bonus calculation (you can modify this as needed)
+        return 0.1 * salary;
+    }
+}
+ 
+public class EmployeeManagementSystem {
+    public static void main(String[] args) {
+        // Create an Employee object
+        Employee employee = new Employee(101, "John", "Doe", new Date(), 50000.0);
+ 
+        // Accessing and modifying attributes using accessor and mutator methods
+        System.out.println("Employee ID: " + employee.getEmployeeId());
+        System.out.println("Employee Name: " + employee.getFirstName() + " " + employee.getLastName());
+        System.out.println("Date of Birth: " + employee.getDateOfBirth());
+        System.out.println("Salary: $" + employee.getSalary());
+ 
+        // Calculating and displaying yearly bonus
+        double yearlyBonus = employee.calculateYearlyBonus();
+        System.out.println("Yearly Bonus: $" + yearlyBonus);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9. Exceptional handling:
+
+9.1 Arithmetic
+
+package ese1;
+public class JavaExceptionExample {
+
+	public static void main(String[] args) {
+		try {
+			int data = 50 / 0; // may throw exception
+		}
+		// handling the exception
+		catch (ArithmeticException e) {
+			System.out.println(e);
+		}
+		System.out.println("rest of the code1");
+	}
+
+}  
+
+9.2 ArrayOutOfBound
+
+package ese1;
+public class JavaExceptionExample {
+
+	public static void main(String[] args) {
+		try {
+			int arr[] = { 1, 3, 5, 7 };
+			System.out.println(arr[10]); // may throw exception
+		}
+		// handling the array exception
+		catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println(e);
+		}
+		System.out.println("rest of the code");
+	}
+
+}  
+
+9.3 MULTIPLE TRY CATCH
+package ese1;
+
+public class JavaExceptionExample {
+
+	public static void main(String[] args) {
+
+		try {
+			/*
+			 * int a[]=new int[5]; a[5]=30/0; System.out.println(a[10]);
+			 */
+			/*
+			 * int a[]=new int[5];
+			 * 
+			 * System.out.println(a[10]);
+			 */
+			String s = null;
+			System.out.println(s.length());
+		} catch (ArithmeticException e) {
+			System.out.println("Arithmetic Exception occurs");
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("ArrayIndexOutOfBounds Exception occurs");
+		} catch (Exception e) {
+			System.out.println("Parent Exception occurs");
+		}
+		System.out.println("rest of the code");
+	}
+}  
+
+9.4 Finally block
+
+package ese1;
+
+public class JavaExceptionExample {
+	public static void main(String args[]) {
+
+		try {
+
+			System.out.println("Inside try block");
+
+			// below code throws divide by zero exception
+			int data = 25 / 0;
+			System.out.println(data);
+		}
+
+		// handles the Arithmetic Exception / Divide by zero exception
+		catch (ArithmeticException e) {
+			System.out.println("Exception handled");
+			System.out.println(e);
+		}
+
+		// executes regardless of exception occured or not
+		finally {
+			System.out.println("finally block is always executed");
+		}
+
+		System.out.println("rest of the code...");
+	}
+}
+
+
+10. Multithreading:
+
+package ese1;
+class A implements Runnable
+{
+	@Override
+	public void run()
+	{
+		for(int i=1;i<=5;i++)
+		{
+			System.out.println("Hi");
+			try {
+				Thread.sleep(10);
+			}catch(InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+class B implements Runnable
+{
+	@Override
+	public void run()
+	{
+		for(int i=1;i<=5;i++)
+		{
+			System.out.println("Hello");
+			try {
+				Thread.sleep(10);
+			}catch(InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+public class Demo {
+    public static void main(String[] args) throws NumberFormatException {   
+    	
+//    	A obj1=new A();
+//    	B obj2=new B();
+//    	Runnable obj1=new A();
+//    	Runnable obj2=new B();
+    	
+    	
+//    	Runnable obj1=new Runnable()
+//    	{
+//    		public void run()
+//    		{
+//    			for(int i=1;i<=5;i++)
+//    			{
+//    				System.out.println("Hello");
+//    				try {
+//    					Thread.sleep(10);
+//    				}catch(InterruptedException e) {
+//    					e.printStackTrace();
+//    				}
+//    			}
+//    		}
+//   		};
+    	
+    	Runnable obj1=()->
+    	{
+    		for(int i=1;i<=5;i++)
+    		{
+    			System.out.println("Hi");
+    			try {Thread.sleep(10);}catch(InterruptedException e) {e.printStackTrace();}
+    		}
+    	};
+    	
+    	Runnable obj2=()->
+    	{
+    		for(int i=1;i<=5;i++)
+    		{
+    			System.out.println("Hello");
+    			try {Thread.sleep(10);}catch(InterruptedException e) {e.printStackTrace();}
+    		}
+    	};
+    	
+    	Thread t1=new Thread(obj1);
+    	Thread t2=new Thread(obj2);
+    	 	
+    	t1.start();
+    	t2.start();
+    }
+    
+}
+
+class Z
+{
+	
+}
+
+Ques:
+package ese1;
+
+class ThreadAttendance extends Thread {
+ private String className;
+
+ public ThreadAttendance(String className) {
+     this.className = className;
+ }
+
+ @Override
+ public void run() {
+     for (int day = 1; day <= 5; day++) {
+         System.out.println("Class: " + className + ", Day: " + day);
+         // Simulate attendance marking by printing names of students present
+         System.out.println("   Student 1: Present");
+         System.out.println("   Student 2: Present");
+         System.out.println("   Student 3: Present");
+
+         try {
+             Thread.sleep(1000); // Simulating a day's duration
+         } catch (InterruptedException e) {
+             e.printStackTrace();
+         }
+     }
+ }
+}
+
+class RunnableAttendance implements Runnable {
+ private String studentName;
+
+ public RunnableAttendance(String studentName) {
+     this.studentName = studentName;
+ }
+
+ @Override
+ public void run() {
+     for (int day = 1; day <= 5; day++) {
+         // Simulate a student arriving late
+         System.out.println("Day " + day + ": " + studentName + " is late!");
+
+         try {
+             Thread.sleep(500); // Simulating a day's duration
+         } catch (InterruptedException e) {
+             e.printStackTrace();
+         }
+     }
+ }
+}
+
+public class Attendance {
+ public static void main(String[] args) {
+     // Create instances of ThreadAttendance for different classes and start them
+     ThreadAttendance class1 = new ThreadAttendance("Class 1");
+     ThreadAttendance class2 = new ThreadAttendance("Class 2");
+
+     class1.start();
+     class2.start();
+
+     // Create instances of RunnableAttendance for different students and execute them using a single thread
+     RunnableAttendance student1 = new RunnableAttendance("Student A");
+     RunnableAttendance student2 = new RunnableAttendance("Student B");
+     RunnableAttendance student3 = new RunnableAttendance("Student C");
+
+     // Execute RunnableAttendance instances using a single thread
+     Thread studentThread = new Thread(student1);
+     studentThread.start();
+
+     // Wait for studentThread to finish before starting the next student
+     try {
+         studentThread.join();
+     } catch (InterruptedException e) {
+         e.printStackTrace();
+     }
+
+     new Thread(student2).start();
+     new Thread(student3).start();
+ }
+}
+
+
+
+11. ArrayList
+// Java program to get the elemens in ArrayList
+import java.io.*;
+import java.util.*;
+
+class GFG {
+    public static void main (String[] args) {
+       ArrayList<Integer> list = new ArrayList();
+     // add the number 
+     list.add(9);
+     list.add(5);
+     list.add(6);
+     System.out.println(list);
+     // get method
+     Integer n= list.get(1);
+     System.out.println("at indext 1 number is:"+n);
+    }
+}
+
+
+Ques:
+
+package ese1;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Ass5 {
+    private static Course findCourse(ArrayList<Course> courses, String courseId) {
+        for (Course course : courses) {
+            if (course.getCourseId().equals(courseId)) {
+                return course;
+            }
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Course> courses = new ArrayList<>();
+
+        while (true) {
+            System.out.println("\n1. Add Course\n2. Enroll Student\n3. Remove Student\n4. Display Enrollments\n5. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter Course ID: ");
+                    String courseId = scanner.nextLine();
+                    System.out.print("Enter Course Name: ");
+                    String courseName = scanner.nextLine();
+                    courses.add(new Course(courseId, courseName));
+                    System.out.println("Course added successfully.");
+                    break;
+                case 2:
+                    System.out.print("Enter Course ID: ");
+                    String id = scanner.nextLine();
+                    Course selectedCourse = findCourse(courses, id);
+                    if (selectedCourse != null) {
+                        System.out.print("Enter Student Name: ");
+                        String studentName = scanner.nextLine();
+                        System.out.print("Enter Student ID: ");
+                        String studentId = scanner.nextLine();
+                        selectedCourse.enrollStudent(studentName, studentId);
+                        System.out.println("Student enrolled successfully.");
+                    } else {
+                        System.out.println("Course not found.");
+                    }
+                    break;
+                case 3:
+                    System.out.print("Enter Course ID: ");
+                    String courseIdToRemove = scanner.nextLine();
+                    Course courseToRemove = findCourse(courses, courseIdToRemove);
+                    if (courseToRemove != null) {
+                        System.out.print("Enter Student ID to remove: ");
+                        String studentIdToRemove = scanner.nextLine();
+                        if (courseToRemove.removeStudent(studentIdToRemove)) {
+                            System.out.println("Student removed successfully.");
+                        } else {
+                            System.out.println("Student not found in the course.");
+                        }
+                    } else {
+                        System.out.println("Course not found.");
+                    }
+                    break;
+                case 4:
+                    for (Course course : courses) {
+                        course.displayEnrollments();
+                    }
+                    break;
+                case 5:
+                    System.out.println("Exiting...");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+}
+
+class Course {
+    private String courseId;
+    private String courseName;
+    private ArrayList<String> studentNames;
+    private ArrayList<String> studentIds;
+
+    public Course(String courseId, String courseName) {
+        this.courseId = courseId;
+        this.courseName = courseName;
+        this.studentNames = new ArrayList<>();
+        this.studentIds = new ArrayList<>();
+    }
+
+    public void displayEnrollments() {
+        System.out.println("Course ID: " + courseId);
+        System.out.println("Course Name: " + courseName);
+        System.out.println("Enrolled Students:");
+        for (int i = 0; i < studentNames.size(); i++) {
+            System.out.println("Student ID: " + studentIds.get(i) + ", Student Name: " + studentNames.get(i));
+        }
+    }
+
+    public void enrollStudent(String studentName, String studentId) {
+        studentNames.add(studentName);
+        studentIds.add(studentId);
+    }
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public boolean removeStudent(String studentId) {
+        int index = studentIds.indexOf(studentId);
+        if (index != -1) {
+            studentIds.remove(index);
+            studentNames.remove(index);
+            return true;
+        }
+        return false;
+    }
+}
+
+
+12. JDBC
+project var right click karun
+ build path configure build path
+ jre system library remove kar
+ mag add library
+ jre system library
+ executable environemt
+ apply
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Properties;
+
+public class DBDemoo {
+	public static void main(String[] args) {
+		new DBDemoo().run();
+	}
+
+	private final String userName = "root";
+	private final String password = "Srushti@228";
+	private final String serverName = "localhost";
+	private final int portNumber = 3307;
+	private final String dbName = "test1";
+	private final String tableName = "JDBC_TEST9";
+
+	private void executeUpdate(Connection conn, String command) throws SQLException {
+        try (Statement stmt = conn.createStatement()) {
+            stmt.executeUpdate(command);
+        }
+    }
+
+	private Connection getConnection() throws SQLException {
+		Properties connectionProps = new Properties();
+		connectionProps.put("user", userName);
+		connectionProps.put("password", password);
+
+		return DriverManager.getConnection("jdbc:mysql://" + serverName + ":" + portNumber + "/" + dbName,
+				connectionProps);
+	}
+
+	public void run() {
+		try (Connection conn = getConnection()) {
+			System.out.println("Connected to database");
+
+			String createString = "CREATE TABLE " + tableName + " (" + "ID INTEGER NOT NULL, "
+					+ "NAME varchar(40) NOT NULL, " + "STREET varchar(40) NOT NULL, " + "CITY varchar(20) NOT NULL, "
+					+ "STATE char(2) NOT NULL, " + "ZIP char(5), " + "PRIMARY KEY (ID))";
+			executeUpdate(conn, createString);
+			System.out.println("Created a table");
+
+			// Insert data into the table
+			String insertData = "INSERT INTO " + tableName + " (ID, NAME, STREET, CITY, STATE, ZIP) VALUES "
+					+ "(1, 'John Doe', '123 Elm St', 'Springfield', 'IL', '62704'), "
+					+ "(2, 'Jane Smith', '456 Oak St', 'Springfield', 'IL', '62705'), "
+					+ "(3, 'Jim Brown', '789 Pine St', 'Springfield', 'IL', '62706')";
+			executeUpdate(conn, insertData);
+			System.out.println("Inserted data into the table");
+
+			// Uncomment to drop the table
+			// executeUpdate(conn, "DROP TABLE " + tableName);
+			// System.out.println("Dropped the table");
+		} catch (SQLException e) {
+			System.err.println("Database error: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+}
