@@ -1270,3 +1270,70 @@ public class DBDemoo {
 		}
 	}
 }
+
+13.servlet
+
+HelloServlet.java
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+/**
+ * Servlet implementation class HelloServlet
+ */
+public class HelloServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public HelloServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html");
+		response.getWriter().println("<!DOCTYPE HTML>");
+		response.getWriter().println("<html>");
+		response.getWriter().println("<body>");
+		response.getWriter().println("<h1>Hello Java</h1>");
+		response.getWriter().println("<style> body { text-align: center; color: #f0f0f0; background-color: #2c2e2c }; </style>");
+		response.getWriter().println("</body>");
+		response.getWriter().println("</html>");
+	}
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
+
+input.html
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Welcome</title>
+</head>
+<body>
+<form method="get" action="HelloServlet">
+<pre>
+Enter name:<input type="text" name=t1>
+<input type=submit><input type=reset>
+</pre>
+</form>
+</body>
+</html>
